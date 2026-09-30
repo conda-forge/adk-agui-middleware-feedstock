@@ -1,6 +1,5 @@
 {% set name = "adk-agui-middleware" %}
 {% set version = "1.5.1" %}
-{% set python_min = "3.11" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -22,8 +21,9 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - ag-ui-protocol >=0.1.7
+    - ag-ui-protocol >=0.1.7,<1.0.0
     - google-adk >=1.9.0
+    - mcp >=1.24.0,<2
     - pydantic >=2.11.7
     - pydantic-settings >=2.10.1
     - fastapi >=0.104.0
@@ -48,3 +48,4 @@ about:
 extra:
   recipe-maintainers:
     - rxm7706
+    - pb01ka
